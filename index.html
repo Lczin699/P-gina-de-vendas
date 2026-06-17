@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Se Divertindo e Aprendendo com Jesus | Atividades Bíblicas Infantis</title>
+<meta name="description" content="Material digital cristão com atividades bíblicas para colorir, quiz, caça-palavras e mais. Ensine a Bíblia para crianças de forma leve e divertida."/>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --sky:    #4FC3F7;
+    --sky2:   #0288D1;
+    --yellow: #FFD54F;
+    --yellow2:#F9A825;
+    --green:  #66BB6A;
+    --green2: #388E3C;
+    --orange: #FFA726;
+    --purple: #AB47BC;
+    --pink:   #EC407A;
+    --cream:  #FFFDE7;
+    --dark:   #1A237E;
+    --navy:   #0D47A1;
+    --white:  #FFFFFF;
+    --gray:   #F5F5F5;
+    --text:   #2E3A59;
+    --radius: 20px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    color: var(--text);
+    background: var(--cream);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ───────────────────────────────────────────────── */
+  .hero {
+    background: linear-gradient(160deg, #0D47A1 0%, #1565C0 40%, #1976D2 70%, #4FC3F7 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* floating clouds */
+  .cloud { position: absolute; background: rgba(255,255,255,0.18); border-radius: 50px; filter: blur(2px); }
+  .c1 { width:200px; height:60px; top:8%; left:-30px; animation: drift 18s infinite linear; }
+  .c2 { width:150px; height:45px; top:15%; right:5%; animation: drift 24s infinite linear reverse; }
+  .c3 { width:120px; height:38px; top:25%; left:15%; animation: drift 20s infinite linear 5s; }
+  .c4 { width:180px; height:55px; bottom:30%; right:-20px; animation: drift 22s infinite linear 3s; }
+
+  @keyframes drift { 0%{transform:translateX(0)} 50%{transform:translateX(30px)} 100%{transform:translateX(0)} }
+
+  /* stars */
+  .stars { position: absolute; top:0;left:0;width:100%;height:100%; pointer-events:none; }
+  .star { position:absolute; color: var(--yellow); font-size:20px; animation: twinkle 3s infinite; opacity:0.7; }
+  .star:nth-child(1){top:10%;left:8%;animation-delay:0s}
+  .star:nth-child(2){top:20%;right:12%;animation-delay:0.8s}
+  .star:nth-child(3){top:5%;left:55%;animation-delay:1.5s}
+  .star:nth-child(4){top:40%;left:3%;animation-delay:2s}
+  .star:nth-child(5){top:35%;right:5%;animation-delay:0.4s}
+  .star:nth-child(6){bottom:25%;left:10%;animation-delay:1.2s}
+  .star:nth-child(7){bottom:20%;right:8%;animation-delay:0.6s}
+  @keyframes twinkle { 0%,100%{opacity:.7;transform:scale(1)} 50%{opacity:1;transform:scale(1.3)} }
+
+  .hero-badge {
+    background: var(--yellow);
+    color: var(--navy);
+    font-family: 'Fredoka One', cursive;
+    font-size: 13px;
+    letter-spacing: 2px;
+    padding: 8px 20px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+    display: inline-block;
+    text-transform: uppercase;
+    animation: bounce-in 0.6s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  }
+
+  @keyframes bounce-in { 0%{transform:scale(0.5);opacity:0} 80%{transform:scale(1.05)} 100%{transform:scale(1);opacity:1} }
+
+  .hero h1 {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(2.4rem, 7vw, 4.2rem);
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 16px;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    animation: slide-up 0.7s ease 0.2s both;
+  }
+
+  .hero h1 span { color: var(--yellow); }
+
+  .hero p.sub {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    color: rgba(255,255,255,0.9);
+    max-width: 600px;
+    line-height: 1.6;
+    margin-bottom: 36px;
+    animation: slide-up 0.7s ease 0.4s both;
+  }
+
+  @keyframes slide-up { from{transform:translateY(30px);opacity:0} to{transform:translateY(0);opacity:1} }
+
+  .hero-mockup {
+    width: min(380px, 85vw);
+    background: white;
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+    margin-bottom: 40px;
+    animation: slide-up 0.7s ease 0.5s both;
+    position: relative;
+  }
+
+  .mockup-pages {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .mockup-page {
+    border-radius: 12px;
+    aspect-ratio: 3/4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: 800;
+    gap: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    position: relative;
+    overflow: hidden;
+  }
+  .mockup-page span { font-size: 10px; font-weight: 700; opacity: 0.8; letter-spacing: 0.5px; text-align:center; padding: 0 8px; }
+  .mp1 { background: linear-gradient(135deg, #E3F2FD, #90CAF9); color: var(--navy); }
+  .mp2 { background: linear-gradient(135deg, #FFF9C4, #FFD54F); color: #5D4037; }
+  .mp3 { background: linear-gradient(135deg, #F3E5F5, #CE93D8); color: #4A148C; }
+  .mp4 { background: linear-gradient(135deg, #E8F5E9, #81C784); color: #1B5E20; }
+
+  .mockup-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 14px;
+    color: var(--navy);
+    text-align: center;
+  }
+
+  /* CTA button */
+  .btn-cta {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--yellow), var(--orange));
+    color: var(--navy);
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(1.1rem, 3vw, 1.4rem);
+    padding: 18px 40px;
+    border-radius: 100px;
+    text-decoration: none;
+    box-shadow: 0 8px 30px rgba(255,167,38,0.5), 0 2px 0 rgba(0,0,0,0.15);
+    transition: transform .2s, box-shadow .2s;
+    animation: pulse-btn 2.5s infinite;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+  }
+  .btn-cta:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 14px 40px rgba(255,167,38,0.6); }
+  @keyframes pulse-btn { 0%,100%{box-shadow:0 8px 30px rgba(255,167,38,0.5)} 50%{box-shadow:0 8px 45px rgba(255,167,38,0.8)} }
+
+  .hero-guarantees {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+    animation: slide-up 0.7s ease 0.8s both;
+  }
+  .guarantee-badge {
+    background: rgba(255,255,255,0.15);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 12px;
+    font-weight: 700;
+    backdrop-filter: blur(4px);
+  }
+
+  /* ── SECTIONS ────────────────────────────────────────────── */
+  section { padding: 72px 20px; }
+  .container { max-width: 860px; margin: 0 auto; }
+  .container-wide { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  h2.section-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: clamp(1.8rem, 5vw, 2.8rem);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  p.section-sub {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #555;
+    max-width: 600px;
+  }
+
+  /* ── PROBLEM ─────────────────────────────────────────────── */
+  .problem-section { background: white; }
+  .problem-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .problem-card {
+    background: #FFF3E0;
+    border-left: 5px solid var(--orange);
+    border-radius: 16px;
+    padding: 24px;
+  }
+  .problem-card .icon { font-size: 32px; margin-bottom: 12px; }
+  .problem-card h3 { font-size: 1rem; font-weight: 800; color: var(--text); margin-bottom: 8px; }
+  .problem-card p { font-size: 0.9rem; color: #666; line-height: 1.5; }
+
+  .solution-box {
+    background: linear-gradient(135deg, var(--navy), var(--sky2));
+    color: white;
+    border-radius: var(--radius);
+    padding: 40px;
+    margin-top: 48px;
+    text-align: center;
+  }
+  .solution-box h3 {
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.8rem;
+    margin-bottom: 12px;
+    color: var(--yellow);
+  }
+  .solution-box p { opacity: 0.9; line-height: 1.7; font-size: 1.05rem; }
+
+  /* ── CONTENTS ────────────────────────────────────────────── */
+  .contents-section { background: var(--cream); }
+  .chapters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-top: 40px;
+  }
+  .chapter-card {
+    background: white;
+    border-radius: 18px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    border-top: 5px solid;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .chapter-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.12); }
+  .chapter-card:nth-child(1){ border-color: var(--sky); }
+  .chapter-card:nth-child(2){ border-color: var(--orange); }
+  .chapter-card:nth-child(3){ border-color: var(--purple); }
+  .chapter-card:nth-child(4){ border-color: var(--sky2); }
+  .chapter-card:nth-child(5){ border-color: var(--pink); }
+  .chapter-card:nth-child(6){ border-color: var(--green); }
+  .chapter-card .ch-icon { font-size: 36px; margin-bottom: 12px; }
+  .chapter-card h3 { font-family: 'Fredoka One', cursive; font-size: 1.15rem; color: var(--dark); margin-bottom: 8px; }
+  .chapter-card p { font-size: 0.88rem; color: #666; line-height: 1.5; }
+  .chapter-card .tags { display:flex; gap:6px; flex-wrap:wrap; margin-top: 12px; }
+  .tag { background: var(--cream); border-radius: 100px; padding: 3px 10px; font-size: 10px; font-weight: 700; color: var(--text); }
+
+  /* ── BENEFITS ────────────────────────────────────────────── */
+  .benefits-section { background: linear-gradient(135deg, #E3F2FD 0%, #FFF9C4 100%); }
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .benefit-item {
+    background: white;
+    border-radius: 18px;
+    padding: 28px 20px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    transition: transform .2s;
+  }
+  .benefit-item:hover { transform: translateY(-3px); }
+  .benefit-item .b-icon { font-size: 40px; margin-bottom: 12px; }
+  .benefit-item h3 { font-weight: 800; font-size: 0.95rem; color: var(--dark); margin-bottom: 6px; }
+  .benefit-item p { font-size: 0.82rem; color: #666; line-height: 1.4; }
+
+  /* ── BONUSES ─────────────────────────────────────────────── */
+  .bonus-section { background: white; }
+  .bonus-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 40px; }
+  .bonus-card {
+    border: 2px dashed var(--yellow2);
+    border-radius: 20px;
+    padding: 28px;
+    background: linear-gradient(135deg, #FFFDE7, #FFF9C4);
+    position: relative;
+  }
+  .bonus-badge {
+    position: absolute;
+    top: -14px;
+    left: 24px;
+    background: var(--yellow2);
+    color: var(--navy);
+    font-family: 'Fredoka One', cursive;
+    font-size: 12px;
+    padding: 4px 14px;
+    border-radius: 100px;
+  }
+  .bonus-card h3 { font-family: 'Fredoka One', cursive; font-size: 1.1rem; color: var(--dark); margin: 12px 0 8px; }
+  .bonus-card p { font-size: 0.88rem; color: #666; line-height: 1.5; }
+  .bonus-price {
+    margin-top: 16px;
+    font-weight: 800;
+    font-size: 0.85rem;
+    color: var(--green2);
+  }
+  .bonus-price s { color: #aaa; font-weight: 400; }
+
+  /* ── FOR WHOM ─────────────────────────────────────────────── */
+  .forwhom-section { background: var(--cream); }
+  .forwhom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
+  @media(max-width:600px){ .forwhom-grid{grid-template-columns:1fr} }
+  .forwhom-card { border-radius: 20px; padding: 28px; }
+  .for-yes { background: linear-gradient(135deg, #E8F5E9, #C8E6C9); border: 2px solid var(--green); }
+  .for-no  { background: linear-gradient(135deg, #FFEBEE, #FFCDD2); border: 2px solid #EF5350; }
+  .forwhom-card h3 { font-family: 'Fredoka One', cursive; font-size: 1.2rem; margin-bottom: 16px; }
+  .for-yes h3 { color: var(--green2); }
+  .for-no h3 { color: #C62828; }
+  .forwhom-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .forwhom-list li { font-size: 0.9rem; line-height: 1.4; display: flex; gap: 10px; }
+  .forwhom-list li::before { flex-shrink: 0; font-size: 16px; }
+  .for-yes .forwhom-list li::before { content: "✅"; }
+  .for-no  .forwhom-list li::before { content: "❌"; }
+
+  /* ── TESTIMONIALS ─────────────────────────────────────────── */
+  .testimonials-section { background: linear-gradient(135deg, var(--navy), var(--sky2)); }
+  .testimonials-section h2.section-title { color: white; }
+  .testimonials-section .section-label { color: var(--yellow); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-top: 40px; }
+  .testimonial-card {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    padding: 28px;
+    color: white;
+  }
+  .testimonial-card .stars { font-size: 16px; margin-bottom: 12px; letter-spacing: 2px; }
+  .testimonial-card p { font-size: 0.92rem; line-height: 1.6; opacity: 0.95; margin-bottom: 16px; }
+  .testimonial-author { display: flex; align-items: center; gap: 12px; }
+  .avatar { width:42px; height:42px; border-radius: 50%; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+  .testimonial-author .name { font-weight: 800; font-size: 0.9rem; }
+  .testimonial-author .role { font-size: 0.75rem; opacity: 0.7; }
+
+  /* ── PRICE ───────────────────────────────────────────────── */
+  .price-section { background: var(--cream); text-align: center; }
+  .price-box {
+    background: white;
+    border-radius: 28px;
+    padding: 48px 36px;
+    max-width: 500px;
+    margin: 40px auto 0;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+    border: 3px solid var(--yellow);
+    position: relative;
+    overflow: hidden;
+  }
+  .price-box::before {
+    content: "⚡ OFERTA ESPECIAL";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    background: var(--yellow);
+    color: var(--navy);
+    font-family: 'Fredoka One', cursive;
+    font-size: 13px;
+    letter-spacing: 2px;
+    padding: 8px;
+  }
+  .price-box-inner { margin-top: 28px; }
+  .price-old { font-size: 1rem; color: #aaa; font-weight: 600; text-decoration: line-through; margin-bottom: 4px; }
+  .price-main { font-family: 'Fredoka One', cursive; font-size: 4rem; color: var(--navy); line-height: 1; }
+  .price-main sup { font-size: 1.5rem; vertical-align: top; margin-top: 10px; display: inline-block; }
+  .price-note { font-size: 0.85rem; color: #888; margin-top: 4px; margin-bottom: 32px; }
+
+  .includes-list { text-align: left; margin: 28px 0; display: flex; flex-direction: column; gap: 10px; }
+  .inc-item { display: flex; gap: 12px; align-items: flex-start; font-size: 0.9rem; line-height: 1.4; }
+  .inc-item::before { content: "✦"; color: var(--yellow2); font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+
+  .price-guarantees { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-top: 24px; }
+  .pg-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .pg-item .pi { font-size: 24px; }
+  .pg-item span { font-size: 11px; font-weight: 700; color: #777; }
+
+  /* ── GUARANTEE ───────────────────────────────────────────── */
+  .guarantee-section { background: linear-gradient(135deg, #E8F5E9, #FFF9C4); }
+  .guarantee-box {
+    background: white;
+    border-radius: 24px;
+    padding: 40px;
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    max-width: 700px;
+    margin: 0 auto;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  }
+  @media(max-width:600px){ .guarantee-box{ flex-direction:column; text-align:center; } }
+  .guarantee-icon { font-size: 72px; flex-shrink: 0; }
+  .guarantee-box h3 { font-family: 'Fredoka One', cursive; font-size: 1.6rem; color: var(--dark); margin-bottom: 12px; }
+  .guarantee-box p { font-size: 0.95rem; line-height: 1.6; color: #555; }
+
+  /* ── FAQ ─────────────────────────────────────────────────── */
+  .faq-section { background: white; }
+  .faq-list { margin-top: 40px; display: flex; flex-direction: column; gap: 12px; max-width: 700px; }
+  .faq-item { border: 2px solid #EEE; border-radius: 16px; overflow: hidden; }
+  .faq-q {
+    padding: 20px 24px;
+    font-weight: 800;
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    background: #FAFAFA;
+    transition: background .2s;
+  }
+  .faq-q:hover { background: #F0F4FF; }
+  .faq-q .arrow { font-size: 18px; transition: transform .3s; }
+  .faq-a { padding: 0 24px; max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .3s; font-size: 0.9rem; line-height: 1.6; color: #555; }
+  .faq-item.open .faq-q { background: #E3F2FD; color: var(--navy); }
+  .faq-item.open .faq-q .arrow { transform: rotate(180deg); }
+  .faq-item.open .faq-a { max-height: 200px; padding: 16px 24px 20px; }
+
+  /* ── FOOTER CTA ──────────────────────────────────────────── */
+  .footer-cta {
+    background: linear-gradient(135deg, #0D47A1, #1565C0, #4FC3F7);
+    text-align: center;
+    padding: 80px 20px;
+    color: white;
+  }
+  .footer-cta h2 { font-family: 'Fredoka One', cursive; font-size: clamp(1.8rem, 5vw, 3rem); margin-bottom: 16px; }
+  .footer-cta p { opacity: 0.85; font-size: 1.05rem; max-width: 520px; margin: 0 auto 36px; line-height: 1.6; }
+  .footer-urgency { font-size: 0.88rem; opacity: 0.7; margin-top: 16px; }
+
+  footer {
+    background: var(--dark);
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    padding: 24px 20px;
+    font-size: 0.82rem;
+    line-height: 1.7;
+  }
+  footer a { color: var(--sky); text-decoration: none; }
+
+  /* ── STICKY BAR ──────────────────────────────────────────── */
+  .sticky-bar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--navy);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 100;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+    transform: translateY(100%);
+    transition: transform .4s;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .sticky-bar.visible { transform: translateY(0); }
+  .sticky-bar .sb-text { color: white; font-size: 0.9rem; font-weight: 700; }
+  .sticky-bar .sb-price { color: var(--yellow); font-family: 'Fredoka One', cursive; font-size: 1.2rem; }
+  .btn-cta-sm {
+    background: linear-gradient(135deg, var(--yellow), var(--orange));
+    color: var(--navy);
+    font-family: 'Fredoka One', cursive;
+    font-size: 1rem;
+    padding: 12px 28px;
+    border-radius: 100px;
+    text-decoration: none;
+    white-space: nowrap;
+    box-shadow: 0 4px 15px rgba(255,167,38,0.4);
+    transition: transform .2s;
+  }
+  .btn-cta-sm:hover { transform: scale(1.04); }
+
+  /* ── RESPONSIVE ──────────────────────────────────────────── */
+  @media(max-width: 700px) {
+    section { padding: 52px 16px; }
+    .chapters-grid { grid-template-columns: 1fr 1fr; }
+    .benefits-grid { grid-template-columns: 1fr 1fr; }
+    .price-box { padding: 40px 20px 28px; }
+    .price-main { font-size: 3rem; }
+  }
+  @media(max-width: 480px) {
+    .chapters-grid { grid-template-columns: 1fr; }
+    .benefits-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── SCROLL REVEAL ───────────────────────────────────────── */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity .6s, transform .6s; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="stars">
+    <span class="star">✦</span><span class="star">✦</span><span class="star">✦</span>
+    <span class="star">✦</span><span class="star">✦</span><span class="star">✦</span><span class="star">✦</span>
+  </div>
+  <div class="cloud c1"></div>
+  <div class="cloud c2"></div>
+  <div class="cloud c3"></div>
+  <div class="cloud c4"></div>
+
+  <div class="hero-badge">📖 Material Digital Cristão Infantil</div>
+
+  <h1>Ensine a Bíblia para as crianças<br>de um jeito <span>leve, divertido</span><br>e cheio de amor por Jesus ✝</h1>
+
+  <p class="sub">Com atividades bíblicas para colorir, quiz, caça-palavras, labirintos e muito mais — seu filho aprende enquanto se diverte e desenvolve fé desde criança!</p>
+
+  <div class="hero-mockup">
+    <div class="mockup-pages">
+      <div class="mockup-page mp1">⛵<span>Noé e a Arca</span></div>
+      <div class="mockup-page mp2">🌊<span>Moisés e o Mar</span></div>
+      <div class="mockup-page mp3">🦁<span>Daniel e os Leões</span></div>
+      <div class="mockup-page mp4">🐋<span>Jonas e o Peixe</span></div>
+    </div>
+    <div class="mockup-title">✦ Se Divertindo e Aprendendo com Jesus ✦</div>
+  </div>
+
+  <a class="btn-cta" href="#preco">QUERO ACESSAR AGORA — R$ 19,99</a>
+
+  <div class="hero-guarantees">
+    <span class="guarantee-badge">⚡ Acesso imediato</span>
+    <span class="guarantee-badge">📥 Material digital</span>
+    <span class="guarantee-badge">🖨️ Pronto para imprimir</span>
+    <span class="guarantee-badge">🔒 Garantia de 7 dias</span>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem-section">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label" style="color:var(--orange)">😔 O desafio</span>
+      <h2 class="section-title">Ensinar a Bíblia para uma criança nem sempre é fácil…</h2>
+      <p class="section-sub">Você já tentou e percebeu que prender a atenção deles é um desafio enorme?</p>
+    </div>
+    <div class="problem-grid reveal">
+      <div class="problem-card">
+        <div class="icon">📱</div>
+        <h3>Competindo com as telas</h3>
+        <p>Celular, tablet, TV… é difícil competir com tanta distração digital.</p>
+      </div>
+      <div class="problem-card">
+        <div class="icon">😴</div>
+        <h3>Atenção curta</h3>
+        <p>Explicações longas perdem a criança rapidamente. Elas precisam de ação!</p>
+      </div>
+      <div class="problem-card">
+        <div class="icon">😕</div>
+        <h3>Conteúdo difícil de adaptar</h3>
+        <p>A Bíblia é profunda, mas como tornar isso simples para um pequeno?</p>
+      </div>
+      <div class="problem-card">
+        <div class="icon">🕐</div>
+        <h3>Falta de tempo</h3>
+        <p>Pais e professores não têm horas para criar material do zero toda semana.</p>
+      </div>
+    </div>
+
+    <div class="solution-box reveal">
+      <h3>✨ A solução chegou!</h3>
+      <p>Quando a criança <strong>colore, brinca, procura palavras e responde desafios</strong>, ela aprende com mais alegria, guarda melhor as histórias bíblicas e cria uma conexão mais bonita com a fé. É exatamente isso que este material proporciona!</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENTS -->
+<section class="contents-section">
+  <div class="container-wide">
+    <div class="reveal" style="text-align:center">
+      <span class="section-label" style="color:var(--sky2)">📚 O que está dentro</span>
+      <h2 class="section-title">6 Histórias Bíblicas + 3 Bônus Exclusivos</h2>
+      <p class="section-sub" style="margin:0 auto">Cada capítulo traz a história narrada para crianças, versículo bíblico destacado e múltiplas atividades!</p>
+    </div>
+    <div class="chapters-grid reveal">
+      <div class="chapter-card">
+        <div class="ch-icon">⛵</div>
+        <h3>Noé e a Arca</h3>
+        <p>Obediência, fé e o cuidado de Deus com Noé, sua família e os animais.</p>
+        <div class="tags">
+          <span class="tag">🎨 Colorir</span>
+          <span class="tag">🔍 Caça-palavras</span>
+          <span class="tag">✏️ Ligar pontos</span>
+        </div>
+      </div>
+      <div class="chapter-card">
+        <div class="ch-icon">🌊</div>
+        <h3>Moisés e o Mar Vermelho</h3>
+        <p>Coragem, libertação e o poder de Deus abrindo as águas do mar.</p>
+        <div class="tags">
+          <span class="tag">🎨 Colorir</span>
+          <span class="tag">🌀 Labirinto</span>
+        </div>
+      </div>
+      <div class="chapter-card">
+        <div class="ch-icon">🦁</div>
+        <h3>Daniel na Cova dos Leões</h3>
+        <p>Fé inabalável e proteção divina para quem confia em Deus mesmo com medo.</p>
+        <div class="tags">
+          <span class="tag">🎨 Colorir</span>
+          <span class="tag">❓ Quiz bíblico</span>
+        </div>
+      </div>
+      <div class="chapter-card">
+        <div class="ch-icon">🐋</div>
+        <h3>Jonas e o Grande Peixe</h3>
+        <p>Obediência e segunda chance — Deus nos ouve mesmo no lugar mais difícil.</p>
+        <div class="tags">
+          <span class="tag">🎨 Colorir</span>
+          <span class="tag">✍️ Complete frases</span>
+        </div>
+      </div>
+      <div class="chapter-card">
+        <div class="ch-icon">👶</div>
+        <h3>Jesus e as Crianças</h3>
+        <p>Jesus ama cada criança e as chama para perto de Si com todo amor.</p>
+        <div class="tags">
+          <span class="tag">💝 Carta pra Jesus</span>
+          <span class="tag">🖍️ Decorar</span>
+        </div>
+      </div>
+      <div class="chapter-card">
+        <div class="ch-icon">🐑</div>
+        <h3>A Ovelha Perdida</h3>
+        <p>O amor e a busca de Jesus por cada pessoa, como um Bom Pastor.</p>
+        <div class="tags">
+          <span class="tag">🌀 Labirinto</span>
+          <span class="tag">💭 Reflexão</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits-section">
+  <div class="container-wide">
+    <div class="reveal" style="text-align:center">
+      <span class="section-label" style="color:var(--green2)">🌱 Com este material, a criança…</span>
+      <h2 class="section-title">Aprende brincando e cresce na fé!</h2>
+    </div>
+    <div class="benefits-grid reveal">
+      <div class="benefit-item">
+        <div class="b-icon">📖</div>
+        <h3>Conhece histórias bíblicas</h3>
+        <p>De forma leve, visual e adequada para a idade</p>
+      </div>
+      <div class="benefit-item">
+        <div class="b-icon">🎨</div>
+        <h3>Desenvolve criatividade</h3>
+        <p>Colorindo desenhos bonitos de histórias sagradas</p>
+      </div>
+      <div class="benefit-item">
+        <div class="b-icon">🧠</div>
+        <h3>Estimula concentração</h3>
+        <p>Com caça-palavras, labirintos e desafios divertidos</p>
+      </div>
+      <div class="benefit-item">
+        <div class="b-icon">🙏</div>
+        <h3>Aprende valores cristãos</h3>
+        <p>Fé, obediência, amor, coragem, perdão e oração</p>
+      </div>
+      <div class="benefit-item">
+        <div class="b-icon">❤️</div>
+        <h3>Cria momentos especiais</h3>
+        <p>Entre pais e filhos ou professores e alunos</p>
+      </div>
+      <div class="benefit-item">
+        <div class="b-icon">📐</div>
+        <h3>Pratica matemática bíblica</h3>
+        <p>Adição e subtração com temas das histórias</p>
+      </div>
+      <div class="benefit-item">
+        <div class="b-icon">🏠</div>
+        <h3>Usa em qualquer lugar</h3>
+        <p>Casa, igreja, escola bíblica ou célula infantil</p>
+      </div>
+      <div class="benefit-item">
+        <div class="b-icon">🖨️</div>
+        <h3>Imprime quantas vezes quiser</h3>
+        <p>Material digital que você usa para sempre</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BONUSES -->
+<section class="bonus-section">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <span class="section-label" style="color:var(--yellow2)">🎁 Bônus exclusivos</span>
+      <h2 class="section-title">Você ainda recebe presentes especiais!</h2>
+      <p class="section-sub" style="margin:0 auto">Além do material completo, você leva estes bônus — inclusos hoje, sem custo extra.</p>
+    </div>
+    <div class="bonus-grid reveal">
+      <div class="bonus-card">
+        <span class="bonus-badge">✓ Bônus 1 — INCLUSO</span>
+        <h3>🖍️ Kit Extra para Colorir</h3>
+        <p>Desenhos bíblicos adicionais — anjo, estrela de Belém, cordeiro e pomba da paz — para a criança soltar a criatividade enquanto aprende sobre Deus.</p>
+        <div class="bonus-price">Valor real: <s>R$ 27,00</s> → <strong>GRÁTIS</strong></div>
+      </div>
+      <div class="bonus-card">
+        <span class="bonus-badge">✓ Bônus 2 — INCLUSO</span>
+        <h3>➕ Matemática Bíblica Infantil</h3>
+        <p>Exercícios de adição e subtração com temas das histórias bíblicas. A criança aprende matemática enquanto reforça o aprendizado da Palavra.</p>
+        <div class="bonus-price">Valor real: <s>R$ 19,90</s> → <strong>GRÁTIS</strong></div>
+      </div>
+      <div class="bonus-card">
+        <span class="bonus-badge">✓ Bônus 3 — INCLUSO</span>
+        <h3>🏆 Quiz Geral de Fixação</h3>
+        <p>Um quiz completo para revisar todas as histórias do material. Perguntas divertidas que testam o que a criança aprendeu de forma leve.</p>
+        <div class="bonus-price">Valor real: <s>R$ 24,90</s> → <strong>GRÁTIS</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHOM -->
+<section class="forwhom-section">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <span class="section-label" style="color:var(--purple)">🎯 Para quem é?</span>
+      <h2 class="section-title">Este material é perfeito para você que…</h2>
+    </div>
+    <div class="forwhom-grid reveal">
+      <div class="forwhom-card for-yes">
+        <h3>✅ É para você!</h3>
+        <ul class="forwhom-list">
+          <li>É mãe, pai ou responsável e quer ensinar a Bíblia de forma mais leve</li>
+          <li>Quer tirar a criança das telas com uma atividade saudável</li>
+          <li>Ensina na escola bíblica, célula infantil ou culto infantil</li>
+          <li>Procura atividades cristãs prontas para imprimir em casa</li>
+          <li>Quer fortalecer valores cristãos desde a infância</li>
+          <li>Deseja momentos de aprendizado com afeto, criatividade e fé</li>
+        </ul>
+      </div>
+      <div class="forwhom-card for-no">
+        <h3>❌ Não é para você se…</h3>
+        <ul class="forwhom-list">
+          <li>Procura conteúdo adulto ou teológico avançado</li>
+          <li>Não tem interesse em aplicar atividades com crianças</li>
+          <li>Espera receber produto físico em casa (este é digital)</li>
+          <li>Não valoriza materiais educativos cristãos</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="container-wide">
+    <div class="reveal" style="text-align:center">
+      <span class="section-label">⭐ O que dizem sobre o material</span>
+      <h2 class="section-title">Famílias que já usaram amaram!</h2>
+    </div>
+    <div class="testimonials-grid reveal">
+      <div class="testimonial-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p>"Achei ótimo para tirar um pouco as crianças das telas e fazer uma atividade cristã em família. Minha filha amou colorir as histórias!"</p>
+        <div class="testimonial-author">
+          <div class="avatar" style="background:#FFCC80">😊</div>
+          <div><div class="name">Bruna Souza</div><div class="role">Mãe</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p>"É um material simples, mas muito útil. Dá para usar em casa, na célula infantil ou na escolinha da igreja. Recomendo para todas as professoras!"</p>
+        <div class="testimonial-author">
+          <div class="avatar" style="background:#FFAB91">👩‍🏫</div>
+          <div><div class="name">Patrícia A.</div><div class="role">Professora de EBD</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">⭐⭐⭐⭐⭐</div>
+        <p>"Gostei muito da variedade! Tem desenho para colorir, caça-palavras, quiz e atividades que ajudam a criança a pensar e aprender brincando."</p>
+        <div class="testimonial-author">
+          <div class="avatar" style="background:#CE93D8">🙏</div>
+          <div><div class="name">Claudete</div><div class="role">Mãe e líder infantil</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICE -->
+<section class="price-section" id="preco">
+  <div class="container">
+    <div class="reveal" style="text-align:center">
+      <span class="section-label" style="color:var(--navy)">💰 Investimento</span>
+      <h2 class="section-title">Comece hoje por um valor especial</h2>
+      <p class="section-sub" style="margin:0 auto">Acesso imediato ao material completo + todos os bônus.</p>
+    </div>
+
+    <div class="price-box reveal">
+      <div class="price-box-inner">
+        <div class="price-old">De R$ 57,90 por apenas</div>
+        <div class="price-main"><sup>R$</sup>19<span style="font-size:2rem">,99</span></div>
+        <div class="price-note">Valor único. Sem mensalidades. Acesso imediato.</div>
+
+        <div class="includes-list">
+          <div class="inc-item">Material completo "Se Divertindo e Aprendendo com Jesus"</div>
+          <div class="inc-item">6 histórias bíblicas com atividades para cada uma</div>
+          <div class="inc-item">Atividades de colorir, caça-palavras, labirinto e quiz</div>
+          <div class="inc-item">Bônus 1: Kit Extra para Colorir (valor R$ 27,00)</div>
+          <div class="inc-item">Bônus 2: Matemática Bíblica Infantil (valor R$ 19,90)</div>
+          <div class="inc-item">Bônus 3: Quiz Geral de Fixação (valor R$ 24,90)</div>
+          <div class="inc-item">Pronto para imprimir quantas vezes quiser</div>
+          <div class="inc-item">Pode usar em casa, igreja ou escola bíblica</div>
+        </div>
+
+        <a class="btn-cta" href="https://pay.cakto.com.br/bjy2e59_930611" style="display:block;margin-bottom:16px">
+          ✝ QUERO ACESSAR AGORA — R$ 19,99
+        </a>
+
+        <div class="price-guarantees">
+          <div class="pg-item"><div class="pi">🔒</div><span>Pagamento<br>seguro</span></div>
+          <div class="pg-item"><div class="pi">⚡</div><span>Acesso<br>imediato</span></div>
+          <div class="pg-item"><div class="pi">💰</div><span>Garantia<br>7 dias</span></div>
+          <div class="pg-item"><div class="pi">📥</div><span>Digital<br>para imprimir</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section class="guarantee-section">
+  <div class="container">
+    <div class="guarantee-box reveal">
+      <div class="guarantee-icon">🛡️</div>
+      <div>
+        <h3>Garantia de 7 dias sem risco!</h3>
+        <p>Acesse o material, conheça todas as atividades e veja se faz sentido para você e para as crianças. Se dentro de <strong>7 dias</strong> você sentir que não era o que esperava, pode solicitar o reembolso completo. Você começa hoje com total tranquilidade. ✅</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="reveal">
+      <span class="section-label" style="color:var(--sky2)">❓ Dúvidas frequentes</span>
+      <h2 class="section-title">Perguntas e respostas</h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <div class="faq-q">Como recebo o material após a compra? <span class="arrow">▼</span></div>
+        <div class="faq-a">O acesso é imediato! Após a confirmação do pagamento, você recebe o link de download por e-mail e já pode baixar o PDF na hora.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Para qual idade o material é indicado? <span class="arrow">▼</span></div>
+        <div class="faq-a">O material foi pensado para crianças de 4 a 12 anos. As atividades são diversificadas para atender diferentes faixas etárias dentro desse intervalo.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Posso imprimir quantas vezes quiser? <span class="arrow">▼</span></div>
+        <div class="faq-a">Sim! Por ser digital, você pode imprimir as páginas quantas vezes precisar — para usar com um filho, uma turma inteira ou reutilizar nas próximas temporadas.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Precisa de algum aplicativo especial para abrir? <span class="arrow">▼</span></div>
+        <div class="faq-a">Não! O material é um arquivo PDF, que pode ser aberto em qualquer dispositivo — celular, tablet, computador — com o leitor de PDF gratuito que você já tem.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Posso usar na escola bíblica ou culto infantil? <span class="arrow">▼</span></div>
+        <div class="faq-a">Sim! O material foi criado exatamente para isso. Você pode usar em casa, na escola bíblica, célula infantil ou qualquer contexto de ensino cristão para crianças.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Como funciona a garantia de 7 dias? <span class="arrow">▼</span></div>
+        <div class="faq-a">Se dentro de 7 dias após a compra você não ficar satisfeito, basta solicitar o reembolso conforme as regras da plataforma Kiwify e você receberá seu dinheiro de volta sem burocracia.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER CTA -->
+<section class="footer-cta">
+  <div class="stars">
+    <span class="star" style="top:10%;left:5%">✦</span>
+    <span class="star" style="top:20%;right:8%">✦</span>
+    <span class="star" style="bottom:25%;left:12%">✦</span>
+    <span class="star" style="bottom:15%;right:6%">✦</span>
+  </div>
+  <h2>Transforme o aprendizado bíblico<br>em um momento de alegria e fé! ✝</h2>
+  <p>As crianças aprendem melhor quando participam, brincam e se encantam. Com este material você tem em mãos uma forma prática, bonita e pronta para usar — que planta a Palavra de Deus no coração dos pequenos.</p>
+  <a class="btn-cta" href="https://pay.kiwify.com.br/7FUvoeZ">✦ QUERO ACESSAR AGORA — R$ 19,99</a>
+  <p class="footer-urgency">⏳ Oferta por tempo limitado • Acesso imediato • Garantia de 7 dias</p>
+</section>
+
+<footer>
+  <p><strong>Se Divertindo e Aprendendo com Jesus</strong> — Material Digital Cristão Infantil</p>
+  <p>Dúvidas? Entre em contato: <a href="mailto:Jonas.ribeiroo160@gmail.com">Jonas.ribeiroo160@gmail.com</a> • Seg a sex, 9h às 18h</p>
+  <p style="margin-top:8px">🔒 Pagamento 100% seguro via Kiwify · © 2025 Todos os direitos reservados</p>
+  <p style="margin-top:6px;font-size:0.75rem">Este site não é afiliado ao Facebook, Instagram ou Google.</p>
+</footer>
+
+<!-- STICKY BAR -->
+<div class="sticky-bar" id="stickyBar">
+  <div>
+    <div class="sb-text">✝ Se Divertindo e Aprendendo com Jesus</div>
+    <div class="sb-price">R$ 19,99 — Acesso imediato ⚡</div>
+  </div>
+  <a class="btn-cta-sm" href="https://pay.kiwify.com.br/7FUvoeZ">GARANTIR AGORA</a>
+</div>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Sticky bar
+  const heroEl = document.querySelector('.hero');
+  const sticky = document.getElementById('stickyBar');
+  window.addEventListener('scroll', () => {
+    const heroBottom = heroEl.getBoundingClientRect().bottom;
+    sticky.classList.toggle('visible', heroBottom < 0);
+  });
+</script>
+</body>
+</html>
